@@ -7,7 +7,7 @@ use walkdir::WalkDir;
 const SKELTON: Dir<'_> = include_dir!("./skelton");
 
 fn validiate_project_name(s: &str) -> Result<PathBuf> {
-	let valid_proj_name_re: Regex = Regex::new("^[a-zA-Z][a-zA-Z0-9_-]*")?;
+	let valid_proj_name_re: Regex = Regex::new("^[a-zA-Z][a-zA-Z0-9_-]*$")?;
 	if valid_proj_name_re.is_match(s) {
 		let mut ret = PathBuf::new();
 		ret.push(s);
@@ -22,7 +22,7 @@ fn main() -> Result<()> {
 	println!("input project name: ");
 	let mut buf = String::new();
 	std::io::stdin().read_line(&mut buf)?;
-	let project_name = validiate_project_name(&buf)?;
+	let project_name = validiate_project_name(buf.trim())?;
 
 	std::fs::create_dir(&project_name)?;
 	SKELTON.extract(&project_name)?;
