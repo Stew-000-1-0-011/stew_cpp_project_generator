@@ -1,0 +1,13 @@
+[package]
+name = "stew_cpp_project_generator"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1"
+include_dir = "0.7"
+regex = "1"
+walkdir = "2"
+
+[profile.release]
+opt-level = 'z'
