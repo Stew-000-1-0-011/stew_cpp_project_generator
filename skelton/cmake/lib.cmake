@@ -19,7 +19,7 @@ block(PROPAGATE install_target_list)
 				${PROJECT_NAME}_build_export
 		)
 		target_include_directories(${PROJECT_NAME}_lib
-			INTERFACE
+			PUBLIC
 				$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 				$<INSTALL_INTERFACE:include>
 		)
