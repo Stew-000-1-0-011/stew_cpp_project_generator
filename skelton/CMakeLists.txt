@@ -61,11 +61,6 @@ target_link_libraries(${PROJECT_NAME}_dep_export
 	INTERFACE
 		# add exported dependencies (s.t. any header depends)
 )
-target_include_directories(${PROJECT_NAME}_dep_export
-	INTERFACE
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-		$<INSTALL_INTERFACE:include>
-)
 
 
 # --- 各種ターゲットを作成 ---
