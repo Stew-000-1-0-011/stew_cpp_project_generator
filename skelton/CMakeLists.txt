@@ -18,7 +18,7 @@ if(NOT (CMAKE_GENERATOR MATCHES "Ninja"))
 	)
 endif()
 
-if(NOT DEFINED CMAKE_INSTALL_PREFIX OR CMAKE_INSTALL_PREFIX STREQUAL "/usr/local")
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 	message(WARNING
 		"CMAKE_INSTALL_PREFIX should be set explicitly.\n"
 		"Please configure with `-DCMAKE_INSTALL_PREFIX=<path>`.\n"
