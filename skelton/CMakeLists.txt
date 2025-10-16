@@ -11,19 +11,31 @@ project(<stew_replace:proj_name>
 # 	message(FATAL_ERROR "No C++ compiler specified. Please set CMAKE_CXX_COMPILER explicitly (e.g., cmake -DCMAKE_CXX_COMPILER=clang++ ..).")
 # endif()
 
-if(NOT (CMAKE_GENERATOR MATCHES "Ninja" OR CMAKE_GENERATOR MATCHES "Makefiles"))
+if(NOT (CMAKE_GENERATOR MATCHES "Ninja"))
 	message(FATAL_ERROR
-		"Error: This project requires the Ninja or Makefile generator. "
+		"This project requires the Ninja. "
 		"Your current generator is '${CMAKE_GENERATOR}'."
 	)
 endif()
 
-
-if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-	message(FATAL_ERROR
-		"CMAKE_INSTALL_PREFIX must be set explicitly. Default install prefix is not allowed."
-		"Please configure with -DCMAKE_INSTALL_PREFIX=<path>"
+if(NOT DEFINED CMAKE_INSTALL_PREFIX OR CMAKE_INSTALL_PREFIX STREQUAL "/usr/local")
+	message(WARNING
+		"CMAKE_INSTALL_PREFIX should be set explicitly.\n"
+		"Please configure with `-DCMAKE_INSTALL_PREFIX=<path>`.\n"
+		"set CMAKE_INSTALL_PREFIX=./install"
 	)
+	unset(CMAKE_INSTALL_PREFIX CACHE)
+	set(CMAKE_INSTALL_PREFIX ./install CACHE STRING "CMAKE_INSTALL_PREFIX")
+endif()
+
+if(NOT DEFINED CMAKE_BUILD_TYPE OR CMAKE_BUILD_TYPE STREQUAL "")
+	message(WARNING
+		"CMAKE_BUILD_TYPE should be set explicitly.\n"
+		"Please configure with `-DCMAKE_BUILD_TYPE=<Debug or Release>`.\n"
+		"set CMAKE_BUILD_TYPE=Debug"
+	)
+	unset(CMAKE_BUILD_TYPE CACHE)
+	set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build.")
 endif()
 
 
