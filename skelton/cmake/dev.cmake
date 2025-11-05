@@ -51,6 +51,7 @@ block(PROPAGATE install_example_target_list)
 					PRIVATE
 						${PROJECT_NAME}_dep_private
 						${PROJECT_NAME}_dep_export
+						${PROJECT_NAME}_dev_dep
 						${PROJECT_NAME}_lib
 						${PROJECT_NAME}_build_private
 						${PROJECT_NAME}_build_export
@@ -71,6 +72,7 @@ block(PROPAGATE install_example_target_list)
 					PRIVATE
 						${PROJECT_NAME}_dep_private
 						${PROJECT_NAME}_dep_export
+						${PROJECT_NAME}_dev_dep
 						${PROJECT_NAME}_lib
 						${PROJECT_NAME}_build_private
 						${PROJECT_NAME}_build_export
